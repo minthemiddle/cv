@@ -1,0 +1,68 @@
+{
+  "links": [
+    { "name": "Email", "link": "mailto:johannes.meyer@example.com" },
+        {
+            "name": "Phone",
+            "link": "tel:+49123456789"
+        },
+        {
+            "name": "LinkedIn",
+            "link": "https://www.linkedin.com/in/johannesmeyer"
+        },
+        { "name": "GitHub", "link": "https://github.com/johannesmeyer" }
+  ],
+  "profile": {
+    "name": "Johannes Meyer (Example)",
+    "summary": "Experienced product manager with a strong background in the technology industry. Passionate about delivering innovative solutions that solve real-world problems.",
+    "details": "As a product manager, I have a proven track record of driving the development and launch of successful products. I excel at understanding customer needs, defining product strategy, and leading cross-functional teams to bring products to market.",
+    "links": {
+        }
+  },
+  "work": [
+    {
+      "from": "2018",
+      "to": "Present",
+      "position": "Senior Product Manager",
+      "organization": "Bayer AG",
+      "type": "Full-time",
+      "experience": "Responsible for the development and launch of a new digital platform for the company's agricultural division. Collaborated with cross-functional teams to define the product roadmap, design user experiences, and deliver incremental updates.",
+      "case": [
+        "Increased user engagement by 35% through user-centric design and iterative improvements.",
+        "Exceeded revenue targets by 20% in the first year of the platform's launch."
+      ]
+    }
+    ],
+  "education": [
+    {
+      "from": "2010",
+      "to": "2014",
+      "position": "Bachelor of Science in Business Informatics",
+      "organization": "University of Mannheim",
+      "description": "Graduated with a focus on product management and software development."
+    }
+  ],
+  "interests": [
+    "Entrepreneurship",
+    "Emerging technologies",
+    "Outdoor activities (hiking, cycling)"
+  ],
+  "competencies": {
+    "it": {
+      "skills": [
+        "Product management",
+        "Agile methodology",
+        "User research",
+        "Data analysis",
+        "Project management"
+      ]
+    },
+    "languages": [
+      { "name": "German", "level": "Native" },
+      { "name": "English", "level": "Fluent" }
+    ]
+  },
+  "volunteering": [
+    "Mentoring young professionals at a local startup incubator",
+    "Organizing community events for the local product management meetup group"
+  ]
+}

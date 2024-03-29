@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 print:bg-white font-sans" x-data="{ cv: null }"
+    x-init="fetch('cv.json').then(response => response.json()).then(data => cv = data)">
+    <div class="mx-auto max-w-4xl p-8 sm:p-12">
+        <div class="overflow-hidden rounded-lg print:rounded-none bg-white shadow-md print:shadow-none">
+            <div class="px-6 py-8 sm:px-10 sm:py-10">
+                <div class="space-y-2">
+                    <div>
+                        <h1 class="text-2xl font-bold" x-text="cv?.profile?.name">
+                    </div>
+                    <div class="space-y-2">
+                        <h1 class="text-lg font-bold" x-text="cv?.profile?.summary"></h1>
+                        <p class="text-gray-600" x-text="cv?.profile?.details"></p>
+                    </div>
+                    <div class="mt-2 space-x-2 -ml-2">
+                        <template x-for="link in cv?.links" :key="link.name" class="">
+                            <a :href="link.link" class="text-blue-500 hover:text-blue-700" x-text="link.name"></a>
+                        </template>
+                    </div>
+                    <!-- <div class="space-x-2">
+                        <a :href="`mailto:${cv?.profile?.email}`" class="text-blue-500 hover:text-blue-700 underline"
+                            x-text="cv?.meta?.email"></a>
+                        <a :href="cv?.meta?.profiles?.reddit" class="text-blue-500 hover:text-blue-700 underline"
+                            target="_blank" rel="noopener noreferrer">Reddit</a>
+                        <a :href="cv?.meta?.profiles?.github" class="text-blue-500 hover:text-blue-700 underline"
+                            target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div> -->
+                </div>
+                <div class="mt-8 space-y-8">
+                    <div>
+                        <h2 class="text-xl font-bold">Work Experience</h2>
+                        <div class="space-y-6">
+                            <template x-for="job in cv?.work" :key="job.position">
+                                <div class="pb-6">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h3 class="text-lg font-bold" x-text="job.position"></h3>
+                                            <p class="text-gray-600" x-text="job.organization"></p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-gray-600" x-text="`${job.from} - ${job.to}`"></p>
+                                            <p class="text-gray-600" x-text="job.type"></p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="mt-2 text-gray-600" x-text="job.experience"></p>
+                                        <div class="mt-2 space-x-2 -ml-2">
+                                            <template x-for="link in job.case" :key="link" class="">
+                                                <a :href="link" class="text-blue-500 hover:text-blue-700"
+                                                    target="_blank" rel="noopener noreferrer">Case Study</a>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">Education</h2>
+                        <div class="space-y-6">
+                            <template x-for="edu in cv?.education" :key="edu.position">
+                                <div class="pb-6">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h3 class="text-lg font-bold" x-text="edu.position"></h3>
+                                            <p class="text-gray-600" x-text="edu.organization"></p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-gray-600" x-text="`${edu.from} - ${edu.to}`"></p>
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 text-gray-600" x-text="edu.description"></p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">Competencies</h2>
+                        <div class="mt-4 space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold">IT Skills</h3>
+                                <ul class="list-disc space-y-2 pl-6 text-gray-600">
+                                    <template x-for="skill in cv?.competencies?.it?.skills" :key="skill">
+                                        <li x-text="skill"></li>
+                                    </template>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold">Languages</h3>
+                                <div class="-ml-2 space-x-2 text-gray-600 flex">
+                                    <template x-for="language in cv?.competencies?.languages">
+                                        <div x-text="`${language.name} (${language.level})`">
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">Interests</h3>
+                            <ul class="list-disc space-y-2 pl-6 text-gray-600">
+                                <template x-for="interest in cv?.interests" :key="interest">
+                                    <li x-html="interest"></li>
+                                </template>
+                            </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">
+                            Volunteering
+                            </h3>
+                            <ul class="list-disc space-y-2 pl-6 text-gray-600">
+                                <template x-for="volunteer in cv?.volunteering" :key="volunteer">
+                                    <li x-text="volunteer"></li>
+                                </template>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/sample-cv.schema.json",
+  "title": "Sample CV",
+  "type": "object",
+  "properties": {
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "link": { "type": "string" }
+        },
+        "required": ["name", "link"]
+      }
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "summary": { "type": "string" },
+        "details": { "type": "string" }
+      },
+      "required": ["name", "summary", "details", "links"]
+    },
+    "work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "position": { "type": "string" },
+          "organization": { "type": "string" },
+          "type": { "type": "string" },
+          "experience": { "type": "string" },
+          "case": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": [
+          "from",
+          "to",
+          "position",
+          "organization",
+          "type",
+          "experience"
+        ]
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "position": { "type": "string" },
+          "organization": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["from", "to", "position", "organization", "description"]
+      }
+    },
+    "interests": { "type": "array", "items": { "type": "string" } },
+    "competencies": {
+      "type": "object",
+      "properties": {
+        "it": {
+          "type": "object",
+          "properties": {
+            "skills": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": ["skills"]
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "level": { "type": "string" }
+            },
+            "required": ["name", "level"]
+          }
+        }
+      },
+      "required": ["it", "languages"]
+    },
+    "volunteering": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": [
+    "profile",
+    "work",
+    "education",
+    "interests",
+    "competencies",
+    "volunteering"
+  ]
+}
