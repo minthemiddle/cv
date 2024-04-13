@@ -15,7 +15,7 @@
     </style>
 </head>
 
-<body class="bg-gray-50 print:bg-white font-sans" x-data="{ cv: null }"
+<body class="bg-gray-50 print:bg-white font-sans" x-data="{ cv: null, marked: marked.parse }"
     x-init="fetch('cv.json').then(response => response.json()).then(data => cv = data)">
     <div class="mx-auto max-w-4xl p-8 sm:p-12">
         <div class="overflow-hidden rounded-lg print:rounded-none bg-white shadow-md print:shadow-none">
@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="mt-2 text-gray-600" x-text="job.experience"></p>
+                                        <p class="mt-2 text-gray-600" x-html="marked(job.experience)"></p>
                                         <div class="mt-2 space-x-2 -ml-2">
                                             <template x-for="link in job.case" :key="link" class="">
                                                 <a :href="link" class="text-blue-500 hover:text-blue-700 underline"
@@ -127,6 +127,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </body>
 
 </html>
