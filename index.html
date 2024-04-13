@@ -13,6 +13,12 @@
             margin: 0;
         }
     </style>
+    <style type="text/tailwindcss">
+        ul {
+            @apply list-disc;
+            @apply ml-4;
+        }    
+    </style>
 </head>
 
 <body class="bg-gray-50 print:bg-white font-sans" x-data="{ cv: null, marked: marked.parse }"
@@ -51,7 +57,11 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="mt-2 text-gray-600" x-html="marked(job.experience)"></p>
+                                        <ul class="mt-2 space-y-2 text-gray-600 list-disc">
+                                           <template x-for="experience in job.experience" :key="experience">
+                                              <li x-html="marked(experience)"></li>
+                                           </template>
+                                        </ul>
                                         <div class="mt-2 space-x-2 -ml-2">
                                             <template x-for="link in job.case" :key="link" class="">
                                                 <a :href="link" class="text-blue-500 hover:text-blue-700 underline"
