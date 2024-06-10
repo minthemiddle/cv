@@ -35,7 +35,8 @@
                     </div>
                     <div class="space-y-2">
                         <h1 class="text-lg font-bold" x-text="cv?.profile?.summary"></h1>
-                        <p class="text-gray-600" x-text="cv?.profile?.details"></p>
+                        <p class="text-gray-600"
+                            x-html="marked(cv?.profile?.details)"></p>
                     </div>
                     <div class="mt-2 space-x-2 -ml-2">
                         <template x-for="link in cv?.links" :key="link.name" class="">
